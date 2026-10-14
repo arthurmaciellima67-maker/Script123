@@ -1,0 +1,22 @@
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+
+local function setInvisible(invisible)
+    local character = player.Character
+        or player.CharacterAdded:Wait()
+
+    for _, obj in ipairs(character:GetDescendants()) do
+        if obj:IsA("BasePart") then
+            obj.Transparency = invisible and 1 or 0
+        elseif obj:IsA("Decal") then
+            obj.Transparency = invisible and 1 or 0
+    end
+    end
+end
+
+-- Ativa a invisibilidade
+setInvisible(true)
+
+-- Para voltar ao normal, use:
+-- setInvisible(false)
